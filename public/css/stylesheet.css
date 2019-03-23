@@ -29,12 +29,15 @@ section#conteudo-view{
 section#apresentacao-view{
   position: absolute;
   left: 0;
-
   float: left;
   width: 65%;
   height: 100%;
   background: #267CA5;
   color: white;
+  background-image: url(/images/bg.jpg);
+  background-position:top;
+  background-attachment:fixed;
+  background-size:cover;
 }
 
 section#conteudo-view h1{
