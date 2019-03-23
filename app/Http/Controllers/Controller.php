@@ -22,7 +22,9 @@ class Controller extends BaseController
       echo "tela de cadastro";
     }
 
+
+//method to user login VIEW
     public function login(){
-      echo "tela de login";
+      return view('user.login');
     }
 }

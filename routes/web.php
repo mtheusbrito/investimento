@@ -12,8 +12,9 @@
 */
 Route::get('/',['uses'=> 'Controller@homepage']);
 Route::get('/cadastro',['uses'=> 'Controller@cadastrar']);
-Route::get('/login',['uses'=> 'Controller@fazerlogin']);
-// Route::get('/', function () {
-//   echo "string";
-//     // return view('welcome');
-// });
+
+
+
+//Routes to user auth
+Route::get('/login',['uses'=> 'Controller@login']);
+Route::post('/login',['as'=> 'user.login', 'uses'=> 'Controller@login']);
