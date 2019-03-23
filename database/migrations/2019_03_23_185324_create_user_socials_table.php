@@ -14,18 +14,18 @@ class CreateUserSocialsTable extends Migration
     public function up()
     {
         Schema::create('user_socials', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
 
-            $table->integer('user_id')->unsined();
+            $table->integer('user_id')->unsigned();
             $table->string('social_network');
             $table->string('social_id');
             $table->string('social_email');
             $table->string('social_avatar');
 
             $table->timestamps();
-            // user_id faz refecia ao id da tabela user
-            $table->foreign('user_id')->references('id')->('users');
-            $table-> foreign('social_email')->references('email')->('users');
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('social_email')->references('email')->on('users');
         });
     }
 
@@ -34,15 +34,13 @@ class CreateUserSocialsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(){
         Schema::table('user_socials', function (Blueprint $table) {
-            //removendo foreign keys primeiro...
-            //nome da tabela e nome do campo
+
             $table->dropForeign('user_socials_user_id_foreign');
             $table->dropForeign('user_socials_social_email_foreign');
 
         });
         Schema::dropIfExists('user_socials');
-        }
+    }
 }
