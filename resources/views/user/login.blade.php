@@ -17,7 +17,7 @@
 
 
 
-      {!! Form::text('username', null, ['class'=>'input', 'placeholder'=>"Usuário"]) !!}
+      {!! Form::text('email', null, ['class'=>'input', 'placeholder'=>"Email"]) !!}
       {!! Form::password('password', ['class'=>'input', 'placeholder'=>"Senha"]) !!}
       {!! Form::submit('Entrar') !!}
 

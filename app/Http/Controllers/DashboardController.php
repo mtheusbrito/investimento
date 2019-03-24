@@ -6,36 +6,48 @@ use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use Auth;
+use Exception;
 
-class DashboardController extends Controller{
+class DashboardController extends Controller
+{
     private $repository;
     private $validator;
 
-    public function __construct(UserRepository $repository, UserValidator $validator){
-      $this -> repository = $repository;
-      $this -> validator = $validator;
-
-
+    public function __construct(UserRepository $repository, UserValidator $validator)
+    {
+        $this->repository = $repository;
+        $this->validator = $validator;
     }
-    public function auth(Request $request){
-      $data = [
-            'email' => $request -> get('username'),
-            'password' => $request -> get('password')
-      ];
-      try {
-          Auth::attempt($data ,false);
-          return redirect() -> route('user.dashboard');
+    public function auth(Request $request)
+    {
+        $data = [
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
+        ];
+        try {
+            if (env('PASSWORD_HASH')) {
+                Auth::attempt($data, false);
+            } else {
+                $user = $this->repository->findWhere(['email' => $request->get('email')])->first();
 
-      } catch (\Exception $e) {
+                if (!$user)
+                    throw new Exception("Email invalido");
+
+                if ($user->password != $request->get('password'))
+                    throw new Exception('Senha invalida');
+
+                Auth::login($user);
+            }
+
+
+            return redirect()->route('user.dashboard');
+        } catch (Exception $e) {
             return $e->getMessage();
-      }
-
-
-
-        // dd($request -> all());
+        }
     }
 
-    public function index(){
-      return 'Estamos na index';
+    public function index()
+    {
+        return 'Estamos na index';
     }
 }

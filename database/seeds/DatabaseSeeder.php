@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+
         // $this->call(UsersTableSeeder::class);
         User::create([
         'cpf'=>'11122233344' ,
@@ -19,7 +21,7 @@ class DatabaseSeeder extends Seeder
         'birth'=>'1996-05-05',
         'gender'=>'M',
         'email'=>'mtheusbrito@gmail.com',
-        'password'=>bcrypt('123456'),
+        'password'=> env('PASSWORD_HASH') ? bcrypt('123456'):'123456',
 
         ]);
     }

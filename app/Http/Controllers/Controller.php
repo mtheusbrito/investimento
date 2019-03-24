@@ -9,22 +9,24 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+  use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function homepage(){
-      $variavel =  'Homepage do sistema de gestão para grupos de investimeto';
-      return view('welcome', [
-        'title' => $variavel
-      ]);
+  public function homepage()
+  {
+    $variavel =  'Homepage do sistema de gestão para grupos de investimeto';
+    return view('welcome', [
+      'title' => $variavel
+    ]);
+  }
+  public function cadastrar()
+  {
+    echo "tela de cadastro";
+  }
 
-    }
-    public function cadastrar(){
-      echo "tela de cadastro";
-    }
 
-
-//method to user login VIEW
-    public function login(){
-      return view('user.login');
-    }
+  //method to user login VIEW
+  public function login()
+  {
+    return view('user.login');
+  }
 }
