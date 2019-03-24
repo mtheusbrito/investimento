@@ -25,4 +25,5 @@ Route::get('/dashboard',['as'=> 'user.dashboard', 'uses'=> 'DashboardController@
 
 
 //routes to user
-Route::get('/user', ['as'=> 'user.index', 'uses' => 'UsersController@index']);
+// Route::get('/user', ['as'=> 'user.index', 'uses' => 'UsersController@index']);
+Route::resource('user', 'UsersController');

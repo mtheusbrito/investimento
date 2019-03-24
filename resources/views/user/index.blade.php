@@ -24,7 +24,7 @@
             <h3 class="box-title">Adicionar usuário</h3>
         </div>
 
-        {!! Form::open(['method' => 'post', 'class'=>'form-horizontal']) !!}
+        {!! Form::open(['route'=> 'user.store','method' => 'post', 'class'=>'form-horizontal']) !!}
         <div class="box-body">
             <div class='form-group'>
                 @include('template.formulario.input',['label'=> 'CPF','class'=>'col-sm-1 control-label','input' => 'cpf', 'attributes' => ['placeholder'=> '','class'=> 'form-control']])
