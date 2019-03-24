@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +21,8 @@ Route::get('/cadastro',['uses'=> 'Controller@cadastrar']);
 Route::get('/login',['uses'=> 'Controller@login']);
 Route::post('/login',['as'=> 'user.login', 'uses'=> 'DashboardController@auth']);
 Route::get('/dashboard',['as'=> 'user.dashboard', 'uses'=> 'DashboardController@index']);
+
+
+
+//routes to user
+Route::get('/user', ['as'=> 'user.index', 'uses' => 'UsersController@index']);
