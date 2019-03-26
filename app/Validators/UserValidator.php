@@ -21,6 +21,8 @@ class UserValidator extends LaravelValidator
         ValidatorInterface::RULE_CREATE => [
             'cpf' => 'required',
             'name'  => 'required',
+            'phone' => 'required',
+            'email' => 'required|unique:users,email',
             'password'  => 'required',
         ],
         ValidatorInterface::RULE_UPDATE => [],

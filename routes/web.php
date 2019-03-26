@@ -12,18 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',['uses'=> 'Controller@homepage']);
-Route::get('/cadastro',['uses'=> 'Controller@cadastrar']);
+
+Route::get('/', ['uses' => 'Controller@homepage']);
+// Route::get('/cadastro',['uses'=> 'Controller@cadastrar']);
 
 
 
 //Routes to user auth
-Route::get('/login',['uses'=> 'Controller@login']);
-Route::post('/login',['as'=> 'user.login', 'uses'=> 'DashboardController@auth']);
-Route::get('/dashboard',['as'=> 'user.dashboard', 'uses'=> 'DashboardController@index']);
+Route::get('/login', ['uses' => 'Controller@login']);
+Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
+Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
 
 
 //routes to user
-// Route::get('/user', ['as'=> 'user.index', 'uses' => 'UsersController@index']);
-Route::resource('user', 'UsersController');
+Route::resource('users', 'UsersController');

@@ -22,23 +22,25 @@ class UsersController extends Controller
     {
         return view('user.index');
     }
+    public function create()
+    {
+        return view('user.new');
+    }
     public function store(UserCreateRequest $request)
     {
         $request = $this->service->store($request->all());
-        if ($request['success'])
-            $usuario = $request['data'];
+        $usuario = $request['success'] ? $request['data'] : null;
 
-        else
-            $usuario = null;
+        // dd($request);
+        session()->flash('success', [
+
+            'success' => $request['success'],
+            'messages' => $request['messages']
+        ]);
+
 
         return view('user.index', [
             'usuario' => $usuario,
         ]);
     }
-
-    public function show($id)
-    { }
-
-    public function edit($id)
-    { }
 }
