@@ -199,18 +199,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            @if(session('success'))
-
-            <div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                {{ session('success')['messages'] }}
-            </div>
-
-            @else
-            <!-- <div class="alert alert-danger">
-                {{ session('success')['messages'] }}
-            </div> -->
-            @endif
+            @include('template.flash-message')
             @yield('conteudo-view')
             <!-- /.content -->
         </div>

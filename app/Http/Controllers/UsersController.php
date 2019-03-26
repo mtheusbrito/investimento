@@ -20,11 +20,14 @@ class UsersController extends Controller
 
     public function index()
     {
-        return view('user.index');
+        $users = $this->repository->all();
+
+        return view('user.index', ['users' => $users]);
     }
     public function create()
     {
-        return view('user.new');
+
+        return view('user.create');
     }
     public function store(UserCreateRequest $request)
     {
@@ -33,14 +36,26 @@ class UsersController extends Controller
 
         // dd($request);
         session()->flash('success', [
-
             'success' => $request['success'],
             'messages' => $request['messages']
         ]);
 
 
-        return view('user.index', [
-            'usuario' => $usuario,
+        // return view('user.index', [
+        //     'usuario' => $usuario,
+        // ]);
+        return redirect()->route('users.index');
+    }
+
+    public function destroy($id)
+    {
+        $request = $this->service->destroy($id);
+
+        session()->flash('success', [
+            'success' => $request['success'],
+            'messages' => $request['messages']
         ]);
+
+        return redirect()->route('users.index');
     }
 }
