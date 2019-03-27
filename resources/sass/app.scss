@@ -9,9 +9,15 @@
 //Bootstrap 3
 @import '~bootstrap/dist/css/bootstrap.css';
 
-// Admin LTE
-@import '~admin-lte/dist/css/AdminLTE.css';
-@import '~admin-lte/dist/css/skins/_all-skins.css';
+
 
 //Datatables
 @import '~admin-lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css';
+
+//Select2
+@import '~admin-lte/bower_components/select2/dist/css/select2.min.css';
+
+
+// Admin LTE
+@import '~admin-lte/dist/css/AdminLTE.css';
+@import '~admin-lte/dist/css/skins/_all-skins.css';

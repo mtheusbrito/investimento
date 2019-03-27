@@ -6,9 +6,9 @@
     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
   </div>
   <div class="pull-left info">
-    <p>Alexander Pierce</p>
+    <p>Admin</p>
     <!-- Status -->
-    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+    {{-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> --}}
   </div>
 </div>
 
@@ -30,7 +30,8 @@
   <!-- Optionally, you can add icons to the links -->
   <li><a href="{{ route('users.index') }}"><i class="fa fa-address-book-o"></i> <span>Usuarios</span></a></li>
 <li><a href='{{ route('instituitions.index')}}'><i class="fa fa-building"></i> <span>Instituições</span></a></li>
-  <li class="treeview">
+<li><a href='{{ route('groups.index')}}'><i class="fa fa-group"></i> <span>Grupos</span></a></li>
+  {{-- <li class="treeview">
     <a href="#"><i class="fa fa-group"></i> <span>Grupos</span>
       <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
@@ -40,7 +41,7 @@
       <li><a href="#">Link in level 2</a></li>
       <li><a href="#">Link in level 2</a></li>
     </ul>
-  </li>
+  </li> --}}
 </ul>
 <!-- /.sidebar-menu -->
 </section>

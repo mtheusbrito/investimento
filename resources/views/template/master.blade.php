@@ -34,7 +34,7 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <!-- Messages: style can be found in dropdown.less-->
+                        {{-- <!-- Messages: style can be found in dropdown.less-->
                         <li class="dropdown messages-menu">
                             <!-- Menu toggle button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -131,7 +131,7 @@
                                     <a href="#">View all tasks</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
@@ -139,7 +139,7 @@
                                 <!-- The user image in the navbar-->
                                 <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">Alexander Pierce</span>
+                                <span class="hidden-xs">Admin</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
@@ -147,7 +147,7 @@
                                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
-                                        Alexander Pierce - Web Developer
+                                        Admin - Web Developer
                                         <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>
@@ -178,9 +178,9 @@
                             </ul>
                         </li>
                         <!-- Control Sidebar Toggle Button -->
-                        <li>
+                        {{-- <li>
                             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </nav>
@@ -301,12 +301,18 @@
     <script src='{{ asset('/js/jquery.min.js') }}'></script>
     <script src='{{ asset('/js/jquery.dataTables.min.js')}}'></script>
     <script src='{{ asset('/js/dataTables.bootstrap.min.js')}}'></script>
+    <script src='{{ asset('/js/bootstrap.min.js') }}'></script>
+    <script src='{{ asset('/js/select2.full.min.js')}}'></script>
+    
 
+    
 
     <script src='/js/jquery.slimscroll.min.js'></script>
 
     <script type="text/javascript">
         $(function() {
+             //Initialize Select2 Elements
+            $('.select2').select2()
             $('#example1').DataTable(),
             $('#instituitionsDatatable').DataTable({
                 "columnDefs": [
