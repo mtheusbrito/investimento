@@ -45,16 +45,15 @@ class InstituitionsController extends Controller
         ]);
     }
     public function store(InstituitionCreateRequest $request)
-    {
+    { 
         $request = $this->service->store($request->all());
-        $instituicao = $request['success'] ? $request['data'] : null;
-
-
-        session()->flash(
+        // dd($request);
+            session()->flash(
             'success',
             [
                 'success' => $request['success'],
-                'messages' => $request['messages']
+                'messages' => $request['messages'],
+    
 
             ]
         );
@@ -76,7 +75,15 @@ class InstituitionsController extends Controller
     public function update(InstituitionUpdateRequest $request, $id)
     { }
     public function destroy($id)
-    { }
+    {   
+       
+        $request = $this->service->destroy($id);
+        session()->flash('success', [
+            'success' => $request['success'],
+            'messages' => $request['messages']
+            ]);
+        return redirect()->route('instituitions.index');
+    }
 
     public function create()
     {

@@ -48,7 +48,7 @@ class UserService
     public function destroy($user_id)
     {
         try {
-            $usuario = $this-> repository->delete($user_id);
+            $this-> repository->delete($user_id);
 
             return [
                 'success' => true,

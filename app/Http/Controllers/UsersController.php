@@ -32,7 +32,7 @@ class UsersController extends Controller
     public function store(UserCreateRequest $request)
     {
         $request = $this->service->store($request->all());
-        $usuario = $request['success'] ? $request['data'] : null;
+        // $usuario = $request['success'] ? $request['data'] : null;
 
         // dd($request);
         session()->flash('success', [
