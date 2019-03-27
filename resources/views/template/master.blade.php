@@ -51,7 +51,7 @@
                                             <a href="#">
                                                 <div class="pull-left">
                                                     <!-- User Image -->
-                                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    <img src="{{ asset('/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                                                 </div>
                                                 <!-- Message title and timestamp -->
                                                 <h4>
@@ -298,25 +298,77 @@
 
     <script src='/js/app.js'></script>
     
-    <script src='/js/jquery.min.js'></script>
-    <script src='/js/jquery.dataTables.min.js'></script>
-    <script src='/js/dataTables.bootstrap.min.js'></script>
+    <script src='{{ asset('/js/jquery.min.js') }}'></script>
+    <script src='{{ asset('/js/jquery.dataTables.min.js')}}'></script>
+    <script src='{{ asset('/js/dataTables.bootstrap.min.js')}}'></script>
 
 
     <script src='/js/jquery.slimscroll.min.js'></script>
 
-    <script>
+    <script type="text/javascript">
         $(function() {
-            $('#example1').DataTable()
-            $('#example2').DataTable({
-                'paging': true,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': true,
-                'info': true,
-                'autoWidth': false
+            $('#example1').DataTable(),
+            $('#instituitionsDatatable').DataTable({
+                "columnDefs": [
+                { "width": "20%", "targets": 1 }
+  ]
             })
+            // $('#example2').DataTable({
+            //     // 'paging': true,
+            //     // 'lengthChange': false,
+            //     // 'searching': false,
+            //     // 'ordering': true,
+            //     // 'info': true,
+            //     // 'autoWidth': false,
+            // })
         })
+    </script>
+
+    <script>
+    (function ($, DataTable) {
+    $.extend(true, DataTable.defaults, {
+    language: {
+        "sEmptyTable":   "Nenhum registro encontrado",
+    "sProcessing":   "A processar...",
+    "sLengthMenu":   "Mostrar _MENU_ registos",
+    "sZeroRecords":  "Não foram encontrados resultados",
+    "sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+    "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registos",
+    "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+    "sInfoPostFix":  "",
+    "sSearch":       "Procurar:",
+    "sUrl":          "",
+    "oPaginate": {
+        "sFirst":    "Primeiro",
+        "sPrevious": "Anterior",
+        "sNext":     "Seguinte",
+        "sLast":     "Último"
+    },
+    "oAria": {
+        "sSortAscending":  ": Ordenar colunas de forma ascendente",
+        "sSortDescending": ": Ordenar colunas de forma descendente"
+    }
+    }
+});
+
+})(jQuery, jQuery.fn.dataTable);
+
+    
+    </script>
+    <script>
+        var url = window.location;
+        $('ul.sidebar-menu a').filter(function() {
+            return this.href != url;
+        }).parent().removeClass('active');
+
+        $('ul.sidebar-menu a').filter(function() {
+            return this.href == url;
+        }).parent().addClass('active');
+
+        
+        $('ul.treeview-menu a').filter(function() {
+            return this.href == url;
+        }).parentsUntil(".sidebar-menu > .treeview-menu").addClass('active');
     </script>
 
 

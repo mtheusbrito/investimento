@@ -1,12 +1,9 @@
 @if(session('success'))
 
-<div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    {{ session('success')['messages'] }}
+<div class="box-body">
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      </h4> {{ session('success')['messages'] }}
+    </div>
 </div>
-
-@else
-<!-- <div class="alert alert-danger">
-    {{ session('success')['messages'] }}
-</div> -->
 @endif

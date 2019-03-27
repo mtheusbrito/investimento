@@ -28,8 +28,8 @@
 <ul class="sidebar-menu" data-widget="tree">
   <li class="header">HEADER</li>
   <!-- Optionally, you can add icons to the links -->
-  <li class="active"><a href="{{ route('users.index') }}"><i class="fa fa-address-book-o"></i> <span>Usuarios</span></a></li>
-  <li><a href="#"><i class="fa fa-building"></i> <span>Instituições</span></a></li>
+  <li><a href="{{ route('users.index') }}"><i class="fa fa-address-book-o"></i> <span>Usuarios</span></a></li>
+<li><a href='{{ route('instituitions.index')}}'><i class="fa fa-building"></i> <span>Instituições</span></a></li>
   <li class="treeview">
     <a href="#"><i class="fa fa-group"></i> <span>Grupos</span>
       <span class="pull-right-container">

@@ -4,14 +4,13 @@
 
 <section class="content-header">
     <h1>
-        Usuário
+        Instituição
         <small>Optional description</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{ route('users.index') }}">usuários</a></li>
-        <li class="active">novo usuário</li>
-        
+    <li><a href="{{ route('instituitions.index')}}">instituições</a></li>
+        <li class="active">nova instutuição</li>
     </ol>
 </section>
 
@@ -23,15 +22,17 @@
     <!-- Default box -->
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Novo usuário</h3>
+            <h3 class="box-title">Nova Instituição</h3>
         </div>
-
-        {!! Form::open(['route'=> 'users.store','method' => 'post', 'class'=>'form-horizontal']) !!}
-        @include('user.form')
+        
+        {!! Form::open(['route'=> 'instituitions.store','method' => 'post', 'class'=>'form-horizontal']) !!}
+       
+        @include('instituitions.form')
         {!! Form::close() !!}
 
 
     </div>
+    <!-- /.box-body -->
 
 
     </div>
