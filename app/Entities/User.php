@@ -47,4 +47,12 @@ class User extends Authenticatable
         $birth = $birth[2] . '/' . $birth[1] . '/' . $birth[0];
         return $birth;
     }
+
+
+    //Relacionamento N para N
+    public function groups()
+    {
+
+        return $this->belongsToMany(Group::class, 'user_groups'); //tabela de apoio do relacionamento
+    }
 }

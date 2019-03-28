@@ -47,9 +47,35 @@
                 <h3 class="box-title">Membros do grupo</h3>
                 <h4></h4>
                 </div>
-                <!-- /.box-header -->
+                
                 <div class="box-body">
-    
+                        <table id="groupsDatatable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Email</th>
+                                        <th>Telefone</th>
+                                        <th>Status</th>
+                                        <th>Opções</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($group->users as $user)
+                                    <tr>
+                                    <td>{{$user -> name}}</td>
+                                    <td>{{$user -> email}}</td>
+                                    <td>{{$user -> phone}}</td>
+                                    <td>{{$user -> status}}</td>
+                                    <td></td>
+
+
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+
+                        </table>
+
                 </div>
                 
                 

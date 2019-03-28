@@ -49,17 +49,22 @@ class GroupService
         }
     }
 
-    public function userStore($group_id, array $data)
+    public function userStore($group_id, $data)
     {
-        try { 
+        try {
+            $group    = $this->repository->find($group_id);
+            $user_id  = $data['user_id'];
 
+            $group->users()->attach($user_id);
+
+
+            // dd($group->users);
             return [
                 'success' => true,
                 'messages' => "Usuario incluido no grupo!",
-                'data' => $group,
+                'data' => '',
 
             ];
-
         } catch (Exception $e) {
             switch (get_class($e)) {
                 case QueryException::class:
