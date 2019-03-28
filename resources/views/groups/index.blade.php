@@ -23,7 +23,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <table id="instituitionsDatatable" class="table table-bordered table-striped">
+                <table id="groupsDatatable" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -40,10 +40,24 @@
                             <td>{{$group -> owner->name}}</td>
                             
                             <td>
-                                {!!Form::open(['route' => ['groups.destroy',$group -> id], 'method'=>'DELETE']) !!}
-                                {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', ['type' => 'submit', 'class'=> '']) !!}
-                                {!! Form::close()  !!}
-    
+                                    
+                                    {!!Form::open(['route' => ['groups.destroy',$group -> id], 'method'=>'DELETE']) !!}
+                                    {{-- <a href="{{ route('groups.show', $group->id) }}" title="Detalhes" type="button" class="btn btn-default btn-xs dt-edit" style="margin-right:10px;">
+                                            <span class="fa fa-bars" aria-hidden="true"></span>
+                                    </a> --}}
+                                   
+                                    <a type="button" class="btn btn-default btn-xs dt-edit" title='Editar' style="margin-right:10px;">
+                                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                                    </a>
+
+                                <a  href="{{ route('groups.show', $group->id)}}" type="button" class="btn btn-default btn-xs dt-edit" title="Integrantes" style="margin-right:10px;">
+                                            <span class="fa fa-users" aria-hidden="true"></span>
+                                        </a>
+
+                                    {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>', ['title' =>'Remover', 'type' => 'submit', 'class'=> 'btn btn-default btn-xs dt-edit']) !!}
+                                    {!! Form::close()  !!}
+                                   
+                                </div> 
                             </td>
                         </tr>
                         @endforeach

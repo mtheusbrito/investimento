@@ -38,7 +38,14 @@
                     
                             <td>
                                 {!!Form::open(['route' => ['instituitions.destroy',$instituition -> id], 'method'=>'DELETE']) !!}
-                                {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', ['type' => 'submit', 'class'=> '']) !!}
+                                <a href="{{ route('instituitions.show', $instituition->id) }}" type="button" class="btn btn-default btn-xs dt-edit" style="margin-right:10px;">
+                                        <span class="fa fa-bars" aria-hidden="true"></span>
+                                </a>
+                                <a type="button" class="btn btn-default btn-xs dt-edit" style="margin-right:10px;">
+                                    <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                                </a>
+                               
+                                {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', ['type' => 'submit', 'class'=> 'btn btn-default btn-xs dt-edit']) !!}
                                 {!! Form::close()  !!}
     
                             </td>

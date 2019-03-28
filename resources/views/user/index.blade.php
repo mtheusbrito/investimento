@@ -40,9 +40,9 @@
                     @foreach ($users as $user)
                     <tr>
                         <td>{{$user -> name}}</td>
-                        <td>{{$user -> cpf}}</td>
-                        <td>{{$user -> birth}}
-                        <td>{{$user -> phone}}</td>
+                        <td>{{$user -> formatted_cpf}}</td>
+                        <td>{{$user -> formatted_birth}}
+                        <td>{{$user -> formatted_phone}}</td>
                         <td>{{$user -> email}}</td>
                         <td>{{$user -> status}}</td>
                         <td>{{$user -> permission}}</td>

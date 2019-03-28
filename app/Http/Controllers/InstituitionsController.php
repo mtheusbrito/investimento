@@ -45,15 +45,15 @@ class InstituitionsController extends Controller
         ]);
     }
     public function store(InstituitionCreateRequest $request)
-    { 
+    {
         $request = $this->service->store($request->all());
         // dd($request);
-            session()->flash(
+        session()->flash(
             'success',
             [
                 'success' => $request['success'],
                 'messages' => $request['messages'],
-    
+
 
             ]
         );
@@ -61,7 +61,13 @@ class InstituitionsController extends Controller
     }
 
     public function show($id)
-    { }
+    {
+        $instituition = $this->repository->find($id);
+
+        return view('instituitions.show', [
+            'instituition' => $instituition,
+        ]);
+    }
 
 
     public function edit($id)
@@ -75,13 +81,13 @@ class InstituitionsController extends Controller
     public function update(InstituitionUpdateRequest $request, $id)
     { }
     public function destroy($id)
-    {   
-       
+    {
+
         $request = $this->service->destroy($id);
         session()->flash('success', [
             'success' => $request['success'],
             'messages' => $request['messages']
-            ]);
+        ]);
         return redirect()->route('instituitions.index');
     }
 

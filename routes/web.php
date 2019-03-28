@@ -27,6 +27,9 @@ Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardControll
 
 //routes to user
 Route::resource('users', 'UsersController');
+
 Route::resource('instituitions', 'InstituitionsController');
+
 Route::resource('groups', 'GroupsController');
 
+Route::post('groups/{group_id}/user', ['as' => 'groups.user.store', 'uses' => 'GroupsController@userStore']);

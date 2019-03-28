@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\GroupCreateRequest;
 use App\Http\Requests\GroupUpdateRequest;
 use App\Repositories\GroupRepository;
@@ -11,6 +12,7 @@ use App\Repositories\InstituitionRepository;
 
 use App\Services\GroupService;
 use App\Services\InstituitionService;
+
 
 class GroupsController extends Controller
 {
@@ -51,6 +53,35 @@ class GroupsController extends Controller
         return view('groups.index', [
             'groups' => $groups,
         ]);
+    }
+
+    public function show($group_id)
+    {
+
+        $group = $this->repository->find($group_id);
+        $users = $this->userRepository->selectBoxList();
+        return view(
+            'groups.show',
+            [
+                'group' => $group,
+                'users' => $users,
+            ]
+        );
+    }
+
+    public function userStore(Request $request, $group_id)
+    {
+
+        $request = $this->service->userStore($group_id, $request->all());
+        $userStore = $request['success'] ? $request['data'] : null;
+
+        session()->flash('success', [
+            'success' => $request['success'],
+            'messages' => $request['messages']
+        ]);
+
+
+        return redirect()->route('groups.show', $group_id);
     }
 
     public function create()

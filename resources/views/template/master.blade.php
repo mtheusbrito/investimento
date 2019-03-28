@@ -309,26 +309,7 @@
 
     <script src='/js/jquery.slimscroll.min.js'></script>
 
-    <script type="text/javascript">
-        $(function() {
-             //Initialize Select2 Elements
-            $('.select2').select2()
-            $('#example1').DataTable(),
-            $('#instituitionsDatatable').DataTable({
-                "columnDefs": [
-                { "width": "20%", "targets": 1 }
-  ]
-            })
-            // $('#example2').DataTable({
-            //     // 'paging': true,
-            //     // 'lengthChange': false,
-            //     // 'searching': false,
-            //     // 'ordering': true,
-            //     // 'info': true,
-            //     // 'autoWidth': false,
-            // })
-        })
-    </script>
+<script src="{{ asset('/js/utilsDatatables.js')}}"></script>
 
     <script>
     (function ($, DataTable) {
