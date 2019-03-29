@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         User::create([
         'cpf'=>'11122233344' ,
         'name'=>'Matheus Brito',
-        'phone'=>'02999979775',
+        'phone'=>'22999979775',
         'birth'=>'1996-05-05',
         'gender'=>'M',
         'email'=>'mtheusbrito@gmail.com',

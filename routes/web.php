@@ -27,6 +27,8 @@ Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardControll
 
 //routes to user
 Route::resource('users', 'UsersController');
+//Json
+Route::get('paginate/users', 'UsersController@paginate'); 
 
 Route::resource('instituitions', 'InstituitionsController');
 

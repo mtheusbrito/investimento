@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Repositories\UserRepository;
 use App\Services\UserService;
 use App\Http\Requests\UserCreateRequest;
+use Illuminate\Support\Facades\Response;
 
 
 class UsersController extends Controller
@@ -22,7 +23,7 @@ class UsersController extends Controller
     {
         $users = $this->repository->all();
 
-        return view('user.index', ['users' => $users]);
+        return view('user.index', ['users' => $users]); $users;
     }
     public function create()
     {
@@ -57,5 +58,12 @@ class UsersController extends Controller
         ]);
 
         return redirect()->route('users.index');
+    }
+
+
+    public function paginate()
+    {
+        $users = $this->repository->all();
+        return Response::json($users);
     }
 }

@@ -12,7 +12,6 @@
     </ol>
 </section>
 
-<!-- Main content -->
 <section class="content container-fluid">
 
     <div class="box">
@@ -20,45 +19,11 @@
             <h3 class="box-title">Data Table With Full Features</h3>
             <a href="{{ route('users.create') }}" class='btn btn-info pull-right'>Adicionar</a>
         </div>
-        <!-- /.box-header -->
+      
         <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Cpf</th>
-                        <th>Nascimento</th>
-                        <th>Telefone</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Permissão</th>
-                        <th>Opções</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($users as $user)
-                    <tr>
-                        <td>{{$user -> name}}</td>
-                        <td>{{$user -> formatted_cpf}}</td>
-                        <td>{{$user -> formatted_birth}}
-                        <td>{{$user -> formatted_phone}}</td>
-                        <td>{{$user -> email}}</td>
-                        <td>{{$user -> status}}</td>
-                        <td>{{$user -> permission}}</td>
-                        <td>
-                            {!!Form::open(['route' => ['users.destroy',$user -> id], 'method'=>'DELETE']) !!}
-                            {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', ['type' => 'submit', 'class'=> '']) !!}
-                            {!! Form::close()  !!}
-
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-
-            </table>
+        <table id="usersDatatable" class="table table-bordered table-striped" width="100%"></table>
         </div>
-        <!-- /.box-body -->
+      
     </div>
 </section>
-@endsection 
+@endsection
