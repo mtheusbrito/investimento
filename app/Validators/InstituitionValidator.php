@@ -19,7 +19,7 @@ class InstituitionValidator extends LaravelValidator
      */
     protected $rules = [
         ValidatorInterface::RULE_CREATE => [
-            'nome' => 'required',
+            'name' => 'required',
         ],
         ValidatorInterface::RULE_UPDATE => [],
     ];

@@ -24,14 +24,17 @@ Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth
 Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
 
-
+Route::resource('home','HomeController');
 //routes to user
 Route::resource('users', 'UsersController');
 //Json
-Route::get('paginate/users', 'UsersController@paginate'); 
+Route::get('paginate/users', 'UsersController@paginate');
 
 Route::resource('instituitions', 'InstituitionsController');
+Route::get('paginate/instituitions', 'InstituitionsController@paginate');
 
 Route::resource('groups', 'GroupsController');
+Route::get('paginate/groups', 'GroupsController@paginate');
+Route::get('paginate/groups/members/{group_id}', 'GroupsController@paginateMembers');
 
 Route::post('groups/{group_id}/user', ['as' => 'groups.user.store', 'uses' => 'GroupsController@userStore']);

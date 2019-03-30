@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.master') 
 @section('conteudo-view')
 
 
@@ -8,8 +8,8 @@
         <small>Optional description</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="{{ route('instituitions.index')}}">instituições</a></li>
+        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="{{ route('instituitions.index')}}">instituições</a></li>
         <li class="active">nova instutuição</li>
     </ol>
 </section>
@@ -24,10 +24,12 @@
         <div class="box-header with-border">
             <h3 class="box-title">Nova Instituição</h3>
         </div>
-        
+
         {!! Form::open(['route'=> 'instituitions.store','method' => 'post', 'class'=>'form-horizontal']) !!}
-       
-        @include('instituitions.form')
+    @include('instituitions.form')
+        <div class='box-footer'>
+    @include('template.formulario.submit',['input' => 'Cadastrar', 'attributes'=> [ 'class'=> 'btn btn-info', 'required' => true]])
+        </div>
         {!! Form::close() !!}
 
 
@@ -41,4 +43,4 @@
 
 
 </section>
-@endsection 
+@endsection

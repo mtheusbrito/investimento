@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Repositories\UserRepository;
 use App\Services\UserService;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
+
 use Illuminate\Support\Facades\Response;
 
 
@@ -23,7 +25,8 @@ class UsersController extends Controller
     {
         $users = $this->repository->all();
 
-        return view('user.index', ['users' => $users]); $users;
+        return view('user.index', ['users' => $users]);
+        $users;
     }
     public function create()
     {
@@ -47,6 +50,19 @@ class UsersController extends Controller
         // ]);
         return redirect()->route('users.index');
     }
+    public function update(UserUpdateRequest $request, $id)
+    {
+        
+        $request = $this->service->update($request->all(), $id);
+        
+        session()->flash('success', [
+            'success' => $request['success'],
+            'messages' => $request['messages']
+        ]);
+
+
+        return redirect()->route('users.index');
+    }
 
     public function destroy($id)
     {
@@ -66,4 +82,13 @@ class UsersController extends Controller
         $users = $this->repository->all();
         return Response::json($users);
     }
+
+    public function edit($id_user)
+    {
+        $user = $this->repository->find($id_user);
+        return view('user.edit', [
+            'user' => $user
+        ]);
+    }
+   
 }

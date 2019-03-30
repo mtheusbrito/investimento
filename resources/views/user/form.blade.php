@@ -20,6 +20,4 @@
 
         </div>
     </div>
-    <div class='box-footer'>
-        @include('template.formulario.submit',['input' => 'Cadastrar', 'attributes'=> [ 'class'=> 'btn btn-info']])
-    </div>
+   

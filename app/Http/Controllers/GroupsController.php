@@ -12,6 +12,7 @@ use App\Repositories\InstituitionRepository;
 
 use App\Services\GroupService;
 use App\Services\InstituitionService;
+use Illuminate\Support\Facades\Response;
 
 
 class GroupsController extends Controller
@@ -57,8 +58,8 @@ class GroupsController extends Controller
 
     public function show($group_id)
     {
-
         $group = $this->repository->find($group_id);
+
         $users = $this->userRepository->selectBoxList();
         return view(
             'groups.show',
@@ -68,6 +69,37 @@ class GroupsController extends Controller
             ]
         );
     }
+    public function paginateMembers($group_id)
+    {
+        $group = $this->repository->find($group_id);
+        $users = $group->users;
+        return Response::json($users);
+    }
+    public function edit($group_id)
+    {
+        $group = $this->repository->find($group_id);
+        $user_list = $this->userRepository->selectBoxList();
+        $instituition_list = $this->instituitionRepository->selectBoxList();
+
+        return view('groups.edit', [
+            'group' => $group,
+            'user_list' => $user_list,
+            'instituition_list' => $instituition_list,
+
+        ]);
+    }
+    public function update(GroupUpdateRequest $request, $id)
+    {
+        $request = $this->service->update($request->all(), $id);
+
+        session()->flash('success', [
+            'success' => $request['success'],
+            'messages' => $request['messages']
+        ]);
+
+        return redirect()->route('groups.index');
+    }
+
 
     public function userStore(Request $request, $group_id)
     {
@@ -106,5 +138,11 @@ class GroupsController extends Controller
             'messages' => $request['messages']
         ]);
         return redirect()->route('groups.index');
+    }
+
+    public function paginate()
+    {
+        $groups = $this->repository->with('owner')->with('instituition')->with('users')->all();
+        return Response::json($groups);
     }
 }

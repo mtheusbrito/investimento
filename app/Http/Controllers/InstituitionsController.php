@@ -12,6 +12,7 @@ use App\Http\Requests\InstituitionUpdateRequest;
 use App\Repositories\InstituitionRepository;
 use App\Validators\InstituitionValidator;
 use App\Services\InstituitionService;
+use Illuminate\Support\Facades\Response;
 
 /**
  * Class InstituitionsController.
@@ -39,7 +40,7 @@ class InstituitionsController extends Controller
      */
     public function index()
     {
-        $instituitions = $this->repository->all();;
+        $instituitions = $this->repository->all();
         return view('instituitions.index', [
             'instituitions' => $instituitions,
         ]);
@@ -74,12 +75,36 @@ class InstituitionsController extends Controller
     {
         $instituition = $this->repository->find($id);
 
-        return view('instituitions.edit', compact('instituition'));
+        return view('instituitions.edit', [
+            'instituition' => $instituition,
+
+        ]);
+    }
+
+    public function update(InstituitionUpdateRequest $request, $id)
+    {
+
+        $request = $this->service->update($request->all(), $id);
+        // dd($request);
+        session()->flash(
+            'success',
+            [
+                'success' => $request['success'],
+                'messages' => $request['messages'],
+
+
+            ]
+        );
+        return redirect()->route('instituitions.index');
+    }
+    public function paginate()
+    {
+        $instituitions = $this->repository->all();
+        return Response::json($instituitions);
     }
 
 
-    public function update(InstituitionUpdateRequest $request, $id)
-    { }
+
     public function destroy($id)
     {
 

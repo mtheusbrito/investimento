@@ -7,7 +7,7 @@
         <small><span>  <b>Instiruição:</b> {{ $group->instituition->name}}</span> / <span><b>Responsavel:</b>{{$group->owner->name}}</span></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
     <li><a href='{{ route('groups.index')}}'>grupos</a></li>
     <li class="active">integrantes</li>
 
@@ -49,32 +49,7 @@
                 </div>
                 
                 <div class="box-body">
-                        <table id="groupsDatatable" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Email</th>
-                                        <th>Telefone</th>
-                                        <th>Status</th>
-                                        <th>Opções</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($group->users as $user)
-                                    <tr>
-                                    <td>{{$user -> name}}</td>
-                                    <td>{{$user -> email}}</td>
-                                    <td>{{$user -> phone}}</td>
-                                    <td>{{$user -> status}}</td>
-                                    <td></td>
-
-
-
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-
-                        </table>
+                <table id="membersDatatable" data-id-group="{!!$group->id!!}"class="table table-bordered table-striped" width="100%"></table>
 
                 </div>
                 

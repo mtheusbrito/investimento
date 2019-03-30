@@ -1,4 +1,3 @@
-
 function renderData(data, type, row) {
 
 }
@@ -80,68 +79,107 @@ var btnDelete = function (link) {
 }
 
 function renderUserOptions(data, type, row) {
-    return btnEdit('http://localhost:8000/users/' + data.id + '/edit') +
-        btnDelete('/users/' + data.id);
+    return btnEdit(host + '/users/' + data.id + '/edit') +
+        btnDelete(host + '/users/' + data.id);
 }
+
 $(function () {
 
-    $('.select2').select2(),
+    $('.select2').select2();
+    $('#usersDatatable').DataTable({
 
-        $('#usersDatatable').DataTable({
-
-            "ajax": {
-                "url": 'http://localhost:8000/paginate/users',
-                "dataSrc": ''
-            },
-            'columns': [
-                { title: "Nome", data: 'name', },
-                { title: "Cpf", data: 'cpf', render: renderCpf },
-                { title: "Nascimento", data: 'birth' },
-                { title: "Telefone.", data: 'phone', render: renderTelefone },
-                { title: "Email", data: 'email' },
-                { title: "Status", data: 'status', render: renderAtivo },
-                { title: "Permissão", data: 'permission' },
-                {
-                    title: 'Opções',
-                    data: null,
-                    render: renderUserOptions
-                }
-            ],
-
-
-        }),
+        "ajax": {
+            "url": host + '/paginate/users',
+            "dataSrc": ''
+        },
+        'columns': [
+            { title: "Nome", data: 'name' },
+            { title: "Cpf", data: 'cpf', render: renderCpf },
+            { title: "Nascimento", data: 'birth' },
+            { title: "Telefone.", data: 'phone', render: renderTelefone },
+            { title: "Email", data: 'email' },
+            { title: "Status", data: 'status', render: renderAtivo },
+            { title: "Permissão", data: 'permission' },
+            {
+                title: 'Opções',
+                data: null,
+                render: renderUserOptions
+            }
+        ],
 
 
+    });
+
+    $('#groupsDatatable').DataTable({
+        "ajax": {
+            "url": host + '/paginate/groups',
+            "dataSrc": ''
+        },
+        'columns': [
+            { title: "Nome", data: 'name' },
+            { title: "Responsavel", data: 'owner.name' },
+            { title: "Instituição", data: 'instituition.name' },
+            {
+                title: 'Opções',
+                width: "15%",
+                data: null,
+                render: renderGroupOptions
+            }
+        ],
+    });
+
+    function renderGroupOptions(data, type, row) {
+        return btn(host + '/groups/' + data.id, 'fa fa-users', 'Membros') +
+            btnEdit(host + '/groups/' + data.id + '/edit') +
+            btnDelete(host + '/groups/' + data.id);
+    }
+    $('#example1').DataTable();
+
+    let id = $('.table').data('id-group');
+    $('#membersDatatable').DataTable({
+        "ajax": {
+            "url": host + "/paginate/groups/members/" + id,
+            "dataSrc": '',
+
+        },
+        "columns": [
+            { title: "Nome", data: 'name' },
+            { title: "Email", data: 'email' },
+            { title: "Telefone", data: 'phone', render: renderTelefone },
+            { title: "Status", data: 'status', render: renderAtivo },
+            {
+                title: "Opções",
+                width: '15%',
+                data: null,
+                render: renderMemberOptions
+            }
+
+        ],
+
+    });
+
+    function renderMemberOptions(data, type, row) {
+        return btnDelete("");
+    }
+    $('#instituitionsDatatable').DataTable({
+        "ajax": {
+            "url": host + '/paginate/instituitions',
+            "dataSrc": '',
+        },
+        "columns": [
+            { title: "Nome", data: 'name' },
+            {
+                title: "Opções",
+                width: "15%",
+                data: null,
+                render: renderInstituitionsOptions
+            }
+        ],
 
 
-
-
-
-
-        $('#example1').DataTable(),
-        $('#instGroupsDatatable').DataTable({
-            "columnDefs": [
-                { "width": "15%", "targets": 2 }
-            ]
-        }),
-        $('#instituitionsDatatable').DataTable({
-            "columnDefs": [
-                { "width": "15%", "targets": 1 }
-            ]
-        }),
-        $('#groupsDatatable').DataTable({
-            "columnDefs": [
-                { "width": "15%", "targets": 3 }
-            ]
-        })
-
-
-    // $('#example2').DataTable({
-    //     // 'paging': true,
-    //     // 'lengthChange': false,
-    //     // 'searching': false,
-    //     // 'ordering': true,
-    //     // 'info': true,
-    //     // 'autoWidth': false,
-    // })
+    });
+    function renderInstituitionsOptions(data, type, row) {
+        return btnEdit(host + '/instituitions/' + data.id + '/edit') +
+            btnDelete(host + '/instituitions/' + data.id);
+    }
 })

@@ -7,7 +7,7 @@
         <small>Optional description</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
         <li class="active">grupos</li>
     </ol>
 </section>
@@ -23,8 +23,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <table id="groupsDatatable" class="table table-bordered table-striped">
-                    <thead>
+                    <table id="groupsDatatable" class="table table-bordered table-striped" width="100%"></table>
+                {{-- <table id="groupsDatatable" class="table table-bordered table-striped"> --}}
+                {{--    <thead>
                         <tr>
                             <th>Nome</th>
                             <th>Instituição</th>
@@ -35,18 +36,18 @@
                     <tbody>
                         @foreach ($groups as $group)
                         <tr>
-                            <td>{{$group -> name}}</td>
-                            <td>{{$group -> instituition->name}}</td>
-                            <td>{{$group -> owner->name}}</td>
+                            <td>{{$group -> name }}</td>
+                            {{-- <td>{{$group -> instituition->name}}</td> --}}
+                            {{-- <td>{{$group -> owner->name}}</td> --}}
                             
-                            <td>
+                        {{--    <td>
                                     
                                     {!!Form::open(['route' => ['groups.destroy',$group -> id], 'method'=>'DELETE']) !!}
                                     {{-- <a href="{{ route('groups.show', $group->id) }}" title="Detalhes" type="button" class="btn btn-default btn-xs dt-edit" style="margin-right:10px;">
                                             <span class="fa fa-bars" aria-hidden="true"></span>
                                     </a> --}}
                                    
-                                    <a type="button" class="btn btn-default btn-xs dt-edit" title='Editar' style="margin-right:10px;">
+                     {{--               <a type="button" class="btn btn-default btn-xs dt-edit" title='Editar' style="margin-right:10px;">
                                         <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
                                     </a>
 
@@ -63,7 +64,7 @@
                         @endforeach
                     </tbody>
     
-                </table>
+                 </table>  --}}
             </div>
         </div>
     </section>
