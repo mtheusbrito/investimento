@@ -19,7 +19,7 @@
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data Table With Full Features</h3>
-                <a href="{{ route('instituitions.create') }}" class='btn btn-info pull-right'>Adicionar</a>
+                <a href="{{route('instituitions.create')}}" class='btn btn-info pull-right'>Adicionar</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

@@ -32,6 +32,9 @@ Route::get('paginate/users', 'UsersController@paginate');
 
 Route::resource('instituitions', 'InstituitionsController');
 Route::get('paginate/instituitions', 'InstituitionsController@paginate');
+Route::resource('instituitions.products', 'ProductsController');
+Route::get('paginate/instituitions/{instituition_id}/products', 'ProductsController@paginate');
+
 
 Route::resource('groups', 'GroupsController');
 Route::get('paginate/groups', 'GroupsController@paginate');

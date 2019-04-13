@@ -180,6 +180,21 @@ $(function () {
     });
     function renderInstituitionsOptions(data, type, row) {
         return btnEdit(host + '/instituitions/' + data.id + '/edit') +
-            btnDelete(host + '/instituitions/' + data.id);
+            btnDelete(host + '/instituitions/' + data.id)+
+            btn(host+'/instituitions/'+data.id +'/products', 'fa fa-product-hunt', 'Produtos');
     }
+
+    let id_inst = $('.table').data('id-instituition');
+    $('#productsDatatable').DataTable({
+        "ajax":{
+            "url": host+ '/paginate/instituitions/'+ id_inst+ '/products',
+            "dataSrc": '',
+
+        },
+
+        "columns":[
+                {title: "Nome", }
+        ],
+
+    });
 })
